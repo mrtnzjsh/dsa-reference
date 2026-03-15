@@ -1,5 +1,4 @@
-"""
-Dijkstra's Shortest Path Algorithm Implementation
+"""Dijkstra's Shortest Path Algorithm Implementation
 
 This module implements Dijkstra's algorithm to find the shortest paths from a source node
 to all other nodes in a weighted graph using a MinHeap priority queue for efficient
@@ -24,21 +23,6 @@ Graph Format:
     - Keys: vertex indices (integers)
     - Values: list of tuples (neighbor, weight) representing edges
 
-Example:
-    >>> graph = {
-    ...     0: [(1, 4), (7, 8)],
-    ...     1: [(0, 4), (2, 8), (7, 11)],
-    ...     2: [(1, 8), (3, 7), (8, 2), (5, 4)],
-    ...     3: [(2, 7), (4, 9), (5, 14)],
-    ...     4: [(3, 9), (5, 10)],
-    ...     5: [(2, 4), (3, 14), (4, 10), (6, 2)],
-    ...     6: [(5, 2), (7, 1), (8, 6)],
-    ...     7: [(0, 8), (1, 11), (6, 1), (8, 7)],
-    ...     8: [(2, 2), (6, 6), (7, 7)]
-    ... }
-    >>> djikstra(graph, 0)
-    [0, 4, 12, 19, 21, 11, 9, 8, 14]
-
 Complexity Analysis:
     Time Complexity: O((V + E) log V)
     - V = number of vertices in the graph
@@ -54,29 +38,3 @@ Complexity Analysis:
     - Visited array: O(V)
     - Priority queue: O(V) in worst case (all nodes in heap)
 """
-
-from dsa_reference.data_structures.trees.heaps import MinHeap
-
-def djikstra(graph: dict[int, list[tuple[int, int]]], source: int) -> list[int]:
-    dist = [float('inf') for _ in range(len(graph))]
-
-    dist[source] = 0
-    visited = [False for _ in range(len(graph))]
-
-    pq = MinHeap()
-    pq.insert((0, source))
-
-    while pq:
-        current_dist, vertex = pq.extract_min()
-        if visited[vertex]:
-            continue
-        visited[vertex] = True
-
-        for neighbor, cost in graph[vertex]:
-            if not visited[neighbor]:
-                alt_dist = dist[vertex] + cost
-                if alt_dist < dist[vertex]:
-                    dist[vertex] = alt_dist
-                    pq.insert((dist[vertex], cost))
-
-    return dist

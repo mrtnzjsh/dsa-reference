@@ -29,7 +29,7 @@ def activity_selection(arr: list[Any]) -> list[Any]:
     while j < n:
         if arr[j] > arr[i]:
             result[j] = arr[j]
-            k = j
+            i = j
         j += 1
 
     return result

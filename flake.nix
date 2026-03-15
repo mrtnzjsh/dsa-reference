@@ -17,6 +17,8 @@
       devShells.default = pkgs.mkShell {
         buildInputs = with pkgs; [
           python313
+          go
+          gopls
         ];
       };
     });
