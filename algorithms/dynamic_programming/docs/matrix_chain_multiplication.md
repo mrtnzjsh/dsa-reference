@@ -30,26 +30,26 @@ For matrices A (m × n) and B (n × p), the product AB is an m × p matrix. The 
 
 The algorithm uses a 2D DP table to store solutions to subproblems:
 
-1. **Create DP table**: Create a 2D array `dp[n][n]` where `dp[i][j]` represents the minimum cost to multiply matrices from i to j
+1. **Create DP table**: Create a 2D array dp\[n\][n]` where dp\[i\][j]` represents the minimum cost to multiply matrices from i to j
 
-2. **Initialize single Initialize `dp[i][i] = 0` for all i (single matrix requires no multiplication)
+2. **Initialize single Initialize dp\[i\][i] = 0` for all i (single matrix requires no multiplication)
 
-3. **Set bounds**: Initialize `dp[i][j] = infinity` for all i < j
+3. **Set bounds**: Initialize dp\[i\][j] = infinity` for all i < j
 
 4. **Fill DP table**: Fill the DP table for chains of increasing length:
    - For length from 2 to n:
      - For i from 0 to n - length:
        - j = i + length - 1
        - For k from i to j - 1:
-         - cost = dp[i][k] + dp[k+1][j] + p[i] * p[k+1] * p[j+1]
-         - dp[i][j] = min(dp[i][j], cost)
+         - cost = dp\[i\][k] + dp\[k+1\][j] + p\[i\] * p[k+1] * p[j+1]
+         - dp\[i\][j] = min(dp\[i\][j], cost)
 
-5. **Return result**: The answer is `dp[0][n-1]` - the minimum cost
+5. **Return result**: The answer is dp\[0\][n-1]` - the minimum cost
 
 ## Input
 
 - `p`: A list of integers representing the dimensions of the matrices
-  - Where Matrix i has dimensions `p[i-1] × p[i]`
+  - Where Matrix i has dimensions `p[i-1] × p\[i\]
 
 ## Output
 
@@ -75,43 +75,43 @@ We have 4 matrices:
 Create dp table of size 5×5
 
 **Initialize:**
-- dp[i][i] = 0 for all i
-- dp[i][j] = infinity for i < j
+- dp\[i\][i] = 0 for all i
+- dp\[i\][j] = infinity for i < j
 
 **Fill the table for chains of increasing length:**
 
 **Length = 2:**
-- dp[0][1]: matrices 1-2 (40×20 and 20×30)
-  - k=0: dp[0][0] + dp[1][1] + p[0] × p[1] × p[2] = 0 + 0 + 40×20×30 = 24000
-  - dp[0][1] = 24000
+- dp\[0\][1]: matrices 1-2 (40×20 and 20×30)
+  - k=0: dp\[0\][0] + dp\[1\][1] + p\[0\] × p\[1\] × p\[2\] = 0 + 0 + 40×20×30 = 24000
+  - dp\[0\][1] = 24000
 
-- dp[1][2]: matrices 2-3 (20×30 and 30×10)
-  - k=1: dp[1][1] + dp[2][2] + p[1] × p[2] × p[3] = 0 + 0 + 20×30×10 = 6000
-  - dp[1][2] = 6000
+- dp\[1\][2]: matrices 2-3 (20×30 and 30×10)
+  - k=1: dp\[1\][1] + dp\[2\][2] + p\[1\] × p\[2\] × p\[3\] = 0 + 0 + 20×30×10 = 6000
+  - dp\[1\][2] = 6000
 
-- dp[2][3]: matrices 3-4 (30×10 and 10×30)
-  - k=2: dp[2][2] + dp[3][3] + p[2] × p[3] × p[4] = 0 + 0 + 30×10×30 = 9000
-  - dp[2][3] = 9000
+- dp\[2\][3]: matrices 3-4 (30×10 and 10×30)
+  - k=2: dp\[2\][2] + dp\[3\][3] + p\[2\] × p\[3\] × p\[4\] = 0 + 0 + 30×10×30 = 9000
+  - dp\[2\][3] = 9000
 
 **Length = 3:**
-- dp[0][2]: matrices 1-3 (40×20, 20×30, 30×10)
-  - k=0: dp[0][0] + dp[1][2] + p[0] × p[1] × p[3] = 0 + 6000 + 40×20×10 = 1400 + 8000 = 14000
-  - k=1: dp[0][1] + dp[2][2] + p[0] × p[2] × p[3] = 24000 + 0 + 40×30×10 = 24000 + 12000 = 36000
-  - dp[0][2] = min(14000, 36000) = 14000
+- dp\[0\][2]: matrices 1-3 (40×20, 20×30, 30×10)
+  - k=0: dp\[0\][0] + dp\[1\][2] + p\[0\] × p\[1\] × p\[3\] = 0 + 6000 + 40×20×10 = 1400 + 8000 = 14000
+  - k=1: dp\[0\][1] + dp\[2\][2] + p\[0\] × p\[2\] × p\[3\] = 24000 + 0 + 40×30×10 = 24000 + 12000 = 36000
+  - dp\[0\][2] = min(14000, 36000) = 14000
 
-- dp[1][3]: matrices 2-4 (20×30, 30×10, 10×30)
-  - k=1: dp[1][1] + dp[2][3] + p[1] × p[2] × p[4] = 0 + 9000 + 20×30×30 = 9000 + 18000 = 27000
-  - k=2: dp[1][2] + dp[3][3] + p[1] × p[3] × p[4] = 6000 + 0 + 20×10×30 = 6000 + 6000 = 12000
-  - dp[1][3] = min(27000, 12000) = 12000
+- dp\[1\][3]: matrices 2-4 (20×30, 30×10, 10×30)
+  - k=1: dp\[1\][1] + dp\[2\][3] + p\[1\] × p\[2\] × p\[4\] = 0 + 9000 + 20×30×30 = 9000 + 18000 = 27000
+  - k=2: dp\[1\][2] + dp\[3\][3] + p\[1\] × p\[3\] × p\[4\] = 6000 + 0 + 20×10×30 = 6000 + 6000 = 12000
+  - dp\[1\][3] = min(27000, 12000) = 12000
 
 **Length = 4:**
-- dp[0][3]: matrices 1-4 (40×20, 20×30, 30×10, 10×30)
-  - k=0: dp[0][0] + dp[1][3] + p[0] × p[1] × p[4] = 0 + 12000 + 40×20×30 = 12000 + 24000 = 36000
-  - k=1: dp[0][1] + dp[2][3] + p[0] × p[2] × p[4] = 24000 + 9000 + 40×30×30 = 24000 + 9000 + 36000 = 69000
-  - k=2: dp[0][2] + dp[3][3] + p[0] × p[3] × p[4] = 14000 + 0 + 40×10×30 = 14000 + 12000 = 26000
-  - dp[0][3] = min(36000, 69000, 26000) = 26000
+- dp\[0\][3]: matrices 1-4 (40×20, 20×30, 30×10, 10×30)
+  - k=0: dp\[0\][0] + dp\[1\][3] + p\[0\] × p\[1\] × p\[4\] = 0 + 12000 + 40×20×30 = 12000 + 24000 = 36000
+  - k=1: dp\[0\][1] + dp\[2\][3] + p\[0\] × p\[2\] × p\[4\] = 24000 + 9000 + 40×30×30 = 24000 + 9000 + 36000 = 69000
+  - k=2: dp\[0\][2] + dp\[3\][3] + p\[0\] × p\[3\] × p\[4\] = 14000 + 0 + 40×10×30 = 14000 + 12000 = 26000
+  - dp\[0\][3] = min(36000, 69000, 26000) = 26000
 
-**Final result:** dp[0][3] = 26000
+**Final result:** dp\[0\][3] = 26000
 
 The optimal parenthesization is ((A1 × (A2 × A3)) × A4) or ((A1 × A2) × (A3 × A4))
 

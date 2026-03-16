@@ -18,7 +18,7 @@ Quality control and inspection
 Problem Definition:
 Given:
 A set of n items, where each item has:
-weight[i]: The weight of item i
+weight\[i\]: The weight of item i
 value[i]: The value (profit) of item i
 A knapsack with a maximum weight capacity W
 Constraints:
@@ -31,20 +31,20 @@ Maximize the total value of selected items
 
 The algorithm uses a 1D DP array to store solutions to subproblems:
 
-1. Create a 1D array dp[W+1] where:
-dp[w] represents the maximum value achievable with capacity w
+1. Create a 1D array dp\[W+1\] where:
+dp\[w\] represents the maximum value achievable with capacity w
 
-2. Initialize dp[0] = 0 (0 capacity → 0 value)
+2. Initialize dp\[0\] = 0 (0 capacity → 0 value)
 
-3. Initialize all other dp[w] = 0
+3. Initialize all other dp\[w\] = 0
 
 4. Fill the DP array:
 For w from 1 to W:
   For each item i from 0 to n-1:
-    If weight[i] ≤ w:
-      dp[w] = max(dp[w], value[i] + dp[w - weight[i]])
+    If weight\[i\] ≤ w:
+      dp\[w\] = max(dp\[w\], value[i] + dp\[w - weight\[i\\]])
 
-5. The answer is dp[W] - the maximum value achievable with the given capacity
+5. The answer is dp\[W\] - the maximum value achievable with the given capacity
 
 ## Input
 
@@ -90,43 +90,43 @@ w=1:
 - Item 1: weight 2 > 1 → skip
 - Item 2: weight 3 > 1 → skip
 - Item 3: weight 4 > 1 → skip
-- dp[1] = max(0, 10 + dp[-1]) → out of bounds, so 0
-Result: dp[1] = 0
+- dp\[1\] = max(0, 10 + dp\[-1\]) → out of bounds, so 0
+Result: dp\[1\] = 0
 
 w=2:
-- Item 1: weight 2 ≤ 2 → max(0, 10 + dp[0]) = max(0, 10) = 10
+- Item 1: weight 2 ≤ 2 → max(0, 10 + dp\[0\]) = max(0, 10) = 10
 - Item 2: weight 3 > 2 → skip
 - Item 3: weight 4 > 2 → skip
-- dp[2] = max(10, 0) = 10
+- dp\[2\] = max(10, 0) = 10
 
 w=3:
-- Item 1: weight 2 ≤ 3 → max(0, 10 + dp[1]) = max(0, 10 + 0) = 10
-- Item 2: weight 3 ≤ 3 → max(10, 20 + dp[0]) = max(10, 20) = 20
+- Item 1: weight 2 ≤ 3 → max(0, 10 + dp\[1\]) = max(0, 10 + 0) = 10
+- Item 2: weight 3 ≤ 3 → max(10, 20 + dp\[0\]) = max(10, 20) = 20
 - Item 3: weight 4 > 3 → skip
-- dp[3] = max(10, 20, 0) = 20
+- dp\[3\] = max(10, 20, 0) = 20
 
 w=4:
-- Item 1: weight 2 ≤ 4 → max(0, 10 + dp[2]) = max(0, 10 + 10) = 20
-- Item 2: weight 3 ≤ 4 → max(20, 20 + dp[1]) = max(20, 20 + 0) = 20
-- Item 3: weight 4 ≤ 4 → max(20, 30 + dp[0]) = max(20, 30 + 0) = 30
-- dp[4] = max(20, 20, 30) = 30
+- Item 1: weight 2 ≤ 4 → max(0, 10 + dp\[2\]) = max(0, 10 + 10) = 20
+- Item 2: weight 3 ≤ 4 → max(20, 20 + dp\[1\]) = max(20, 20 + 0) = 20
+- Item 3: weight 4 ≤ 4 → max(20, 30 + dp\[0\]) = max(20, 30 + 0) = 30
+- dp\[4\] = max(20, 20, 30) = 30
 
 w=5:
-- Item 1: weight 2 ≤ 5 → max(0, 10 + dp[3]) = max(0, 10 + 20) = 30
-- Item 2: weight 3 ≤ 5 → max(30, 20 + dp[2]) = max(30, 20 + 10) = 30
-- Item 3: weight 4 ≤ 5 → max(30, 30 + dp[1]) = max(30, 30 + 0) = 30
-- dp[5] = max(30, 30, 30) = 30
+- Item 1: weight 2 ≤ 5 → max(0, 10 + dp\[3\]) = max(0, 10 + 20) = 30
+- Item 2: weight 3 ≤ 5 → max(30, 20 + dp\[2\]) = max(30, 20 + 10) = 30
+- Item 3: weight 4 ≤ 5 → max(30, 30 + dp\[1\]) = max(30, 30 + 0) = 30
+- dp\[5\] = max(30, 30, 30) = 30
 
-Final result: dp[5] = 30
+Final result: dp\[5\] = 30
 This corresponds to taking one item of weight 3 and one item of weight 2
 
 Let me redo the calculation:
 w=2: 10 (one item of weight 2)
 w=3: 20 (one item of weight 3)
-w=4: max(10+10=20, 10+dp[2]=10+10=20, 20+dp[1]=20, 30) = 30 (one item of weight 4)
-w=5: max(10+dp[3]=10+20=30, 20+dp[2]=20+10=30, 30+dp[1]=30) = 30 (one item of weight 3 + one item of weight 2)
+w=4: max(10+10=20, 10+dp\[2\]=10+10=20, 20+dp\[1\]=20, 30) = 30 (one item of weight 4)
+w=5: max(10+dp\[3\]=10+20=30, 20+dp\[2\]=20+10=30, 30+dp\[1\]=30) = 30 (one item of weight 3 + one item of weight 2)
 
-Final result: dp[5] = 30
+Final result: dp\[5\] = 30
 
 ## Complexity Analysis
 

@@ -9,15 +9,15 @@ The algorithm builds a solution incrementally by considering each vertex as an i
 - Uses vertex k as an intermediate node, so the path is: u → ... → k → ... → v
 
 ## Mathematical Foundation
-Let dist[i][j] represent the shortest distance from vertex i to vertex j.
-Initialize: dist[i][j] = weight(i,j) for all edges (i,j), else infinity.
-Recurse: dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+Let dist\[i\][j] represent the shortest distance from vertex i to vertex j.
+Initialize: dist\[i\][j] = weight(i,j) for all edges (i,j), else infinity.
+Recurse: dist\[i\][j] = min(dist\[i\][j], dist\[i\][k] + dist\[k\][j])
 
 ## Algorithm Steps
-1. Initialize a distance matrix dist where dist[i][j] contains the weight of edge (i,j)
+1. Initialize a distance matrix dist where dist\[i\][j] contains the weight of edge (i,j)
 2. For each vertex k from 0 to n-1 (intermediate vertex):
    For each pair (i, j) where i != j:
-     dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+     dist\[i\][j] = min(dist\[i\][j], dist\[i\][k] + dist\[k\][j])
 3. The final dist matrix contains all shortest path distances
 
 ## Example - Finding Shortest Path in a 4-vertex Graph
@@ -123,7 +123,7 @@ Final shortest paths:
 - O(n²) for the distance matrix
 
 ## Input
-- graph: Adjacency matrix where graph[i][j] is the weight of edge from i to j. 0 represents self-loops, and INF for no edge.
+- graph: Adjacency matrix where graph\[i\][j] is the weight of edge from i to j. 0 represents self-loops, and INF for no edge.
 - INF: Infinity value for no path
 
 ## Output
@@ -134,7 +134,7 @@ Final shortest paths:
 ## Notes
 
 ### Negative Cycles
-If dist[i][j] < dist[i][k] + dist[k][j] after the algorithm completes, there exists a negative cycle reachable from i and j. To detect negative cycles, after the algorithm, check if dist[i][j] < 0 for any edge (i,j).
+If dist\[i\][j] < dist\[i\][k] + dist\[k\][j] after the algorithm completes, there exists a negative cycle reachable from i and j. To detect negative cycles, after the algorithm, check if dist\[i\][j] < 0 for any edge (i,j).
 
 ### Trade-offs
 vs. Dijkstra's Algorithm:

@@ -10,19 +10,19 @@ After n-1 iterations, we're guaranteed to have the optimal shortest paths.
 If after n-1 iterations we can still relax an edge, there's a negative cycle.
 
 **Mathematical Foundation:**
-Let dist[v] represent the shortest distance from source s to vertex v.
-Initialize: dist[s] = 0, dist[others] = infinity.
-Relax edge (u, v): if dist[u] + weight(u,v) < dist[v], then dist[v] = dist[u] + weight(u,v)
+Let dist\[v\] represent the shortest distance from source s to vertex v.
+Initialize: dist\[s\] = 0, dist\[others\] = infinity.
+Relax edge (u, v): if dist\[u\] + weight(u,v) < dist\[v\], then dist\[v\] = dist\[u\] + weight(u,v)
 
 **Algorithm Steps:**
-1. Initialize distances: dist[s] = 0, dist[others] = infinity
+1. Initialize distances: dist\[s\] = 0, dist\[others\] = infinity
 2. For i from 1 to n-1:
    For each edge (u, v) in edges:
-     If dist[u] + weight(u,v) < dist[v]:
-       dist[v] = dist[u] + weight(u,v)
+     If dist\[u\] + weight(u,v) < dist\[v\]:
+       dist\[v\] = dist\[u\] + weight(u,v)
 3. Check for negative cycles:
    For each edge (u, v):
-     If dist[u] + weight(u,v) < dist[v]:
+     If dist\[u\] + weight(u,v) < dist\[v\]:
        Negative cycle detected
 
 **Time Complexity:**
@@ -34,7 +34,7 @@ Relax edge (u, v): if dist[u] + weight(u,v) < dist[v], then dist[v] = dist[u] + 
 - O(E) for storing edge list if edges aren't pre-stored
 
 **Negative Cycle Detection:**
-If after n-1 iterations, we can still relax an edge (dist[u] + weight(u,v) < dist[v]), then there's a negative cycle.
+If after n-1 iterations, we can still relax an edge (dist\[u\] + weight(u,v) < dist\[v\]), then there's a negative cycle.
 To find which vertices are affected, after detecting the cycle, continue relaxing for one more iteration.
 Any vertex whose distance is updated lies on a negative cycle.
 

@@ -36,23 +36,23 @@ The algorithm uses dynamic programming to efficiently solve this NP-hard problem
 
 The algorithm uses a 2D DP table to store solutions to subproblems:
 
-1. **Create DP table**: Create a 2D array `dp[n+1][W+1]` where:
-   - `dp[i][w]` represents the maximum value achievable using the first i items with a knapsack capacity of w
+1. **Create DP table**: Create a 2D array `dp\[n+1\][W+1]` where:
+   - `dp\[i\][w]` represents the maximum value achievable using the first i items with a knapsack capacity of w
 
 2. **Initialize**: 
-   - `dp[0][w] = 0` for all w (0 items → 0 value)
-   - `dp[i][0] = 0` for all i (0 capacity → 0 value)
+   - `dp\[0\][w] = 0` for all w (0 items → 0 value)
+   - `dp\[i\][0] = 0` for all i (0 capacity → 0 value)
 
 3. **Fill the DP table**:
    - For i from 1 to n:
    - For w from 1 to W:
-     - If `weight[i-1] > w`: `dp[i][w] = dp[i-1][w]` (skip the item)
-     - Else: `dp[i][w] = max(
-         dp[i-1][w],                    // Don't take item i
-         value[i-1] + dp[i-1][w - weight[i-1]]  // Take item i
+     - If `weight[i-1] > w`: `dp\[i\][w] = dp\[i-1\][w]` (skip the item)
+     - Else: `dp\[i\][w] = max(
+         dp\[i-1\][w],                    // Don't take item i
+         value[i-1] + dp\[i-1\][w - weight\[i-1\]]  // Take item i
        )`
 
-4. **Result**: The answer is `dp[n][W]` - the maximum value achievable with all items
+4. **Result**: The answer is `dp\[n\][W]` - the maximum value achievable with all items
 
 5. **Backtrack** to find which items were selected
 
@@ -93,41 +93,41 @@ Optionally returns the list of selected items (indices)
 
 For `knapsack_01([2, 3, 4, 5], [3, 4, 5, 6], 5)`:
 
-**Initial DP table**: Create dp[5][6] table where rows = items (0-4), cols = capacity (0-5)
+**Initial DP table**: Create dp\[5\][6] table where rows = items (0-4), cols = capacity (0-5)
 
-**Initialize all cells: dp[0][w] = 0 for all w, dp[i][0] = 0 for all i
+**Initialize all cells: dp\[0\][w] = 0 for all w, dp\[i\][0] = 0 for all i
 
 **Fill the table row by row**:
 
 **Row 1 (Item 1: weight=2, value=3)**:
-- w=1: weight(2) > 1 → dp[1][1] = dp[0][1] = 0
-- w=2: weight(2) ≤ 2 → max(dp[0][2]=0, value(3)+dp[0][0]=3) = 3
-- w=3: weight(2) ≤ 3 → max(dp[0][3]=0, value(3)+dp[0][1]=3) = 3
-- w=4: weight(2) ≤ 4 → max(dp[0][4]=0, value(3)+dp[0][2]=3) = 3
-- w=5: weight(2) ≤ 5 → max(dp[0][5]=0, value(3)+dp[0][3]=3) = 3
+- w=1: weight(2) > 1 → dp\[1\][1] = dp\[0\][1] = 0
+- w=2: weight(2) ≤ 2 → max(dp\[0\][2]=0, value(3)+dp\[0\][0]=3) = 3
+- w=3: weight(2) ≤ 3 → max(dp\[0\][3]=0, value(3)+dp\[0\][1]=3) = 3
+- w=4: weight(2) ≤ 4 → max(dp\[0\][4]=0, value(3)+dp\[0\][2]=3) = 3
+- w=5: weight(2) ≤ 5 → max(dp\[0\][5]=0, value(3)+dp\[0\][3]=3) = 3
 
 **Row 2 (Item 2: weight=3, value=4)**:
-- w=1: weight(3) > 1 → dp[2][1] = dp[1][1] = 0
-- w=2: weight(3) > 2 → dp[2][2] = dp[1][2] = 3
-- w=3: weight(3) ≤ 3 → max(dp[1][3]=3, value(4)+dp[1][0]=4) = 4
-- w=4: weight(3) ≤ 4 → max(dp[1][4]=3, value(4)+dp[1][1]=4) = 4
-- w=5: weight(3) ≤ 5 → max(dp[1][5]=3, value(4)+dp[1][2]=7) = 7
+- w=1: weight(3) > 1 → dp\[2\][1] = dp\[1\][1] = 0
+- w=2: weight(3) > 2 → dp\[2\][2] = dp\[1\][2] = 3
+- w=3: weight(3) ≤ 3 → max(dp\[1\][3]=3, value(4)+dp\[1\][0]=4) = 4
+- w=4: weight(3) ≤ 4 → max(dp\[1\][4]=3, value(4)+dp\[1\][1]=4) = 4
+- w=5: weight(3) ≤ 5 → max(dp\[1\][5]=3, value(4)+dp\[1\][2]=7) = 7
 
 **Row 3 (Item 3: weight=4, value=5)**:
-- w=1: weight(4) > 1 → dp[3][1] = dp[2][1] = 0
-- w=2: weight(4) > 2 → dp[3][2] = dp[2][2] = 3
-- w=3: weight(4) > 3 → dp[3][3] = dp[2][3] = 4
-- w=4: weight(4) ≤ 4 → max(dp[2][4]=4, value(5)+dp[2][0]=5) = 5
-- w=5: weight(4) ≤ 5 → max(dp[2][5]=7, value(5)+dp[2][1]=5) = 7
+- w=1: weight(4) > 1 → dp\[3\][1] = dp\[2\][1] = 0
+- w=2: weight(4) > 2 → dp\[3\][2] = dp\[2\][2] = 3
+- w=3: weight(4) > 3 → dp\[3\][3] = dp\[2\][3] = 4
+- w=4: weight(4) ≤ 4 → max(dp\[2\][4]=4, value(5)+dp\[2\][0]=5) = 5
+- w=5: weight(4) ≤ 5 → max(dp\[2\][5]=7, value(5)+dp\[2\][1]=5) = 7
 
 **Row 4 (Item 4: weight=5, value=6)**:
-- w=1: weight(5) > 1 → dp[4][1] = dp[3][1] = 0
-- w=2: weight(5) > 2 → dp[4][2] = dp[3][2] = 3
-- w=3: weight(5) > 3 → dp[4][3] = dp[3][3] = 4
-- w=4: weight(5) > 4 → dp[4][4] = dp[3][4] = 5
-- w=5: weight(5) ≤ 5 → max(dp[3][5]=7, value(6)+dp[3][0]=6) = 7
+- w=1: weight(5) > 1 → dp\[4\][1] = dp\[3\][1] = 0
+- w=2: weight(5) > 2 → dp\[4\][2] = dp\[3\][2] = 3
+- w=3: weight(5) > 3 → dp\[4\][3] = dp\[3\][3] = 4
+- w=4: weight(5) > 4 → dp\[4\][4] = dp\[3\][4] = 5
+- w=5: weight(5) ≤ 5 → max(dp\[3\][5]=7, value(6)+dp\[3\][0]=6) = 7
 
-**Final result**: dp[4][5] = 7
+**Final result**: dp\[4\][5] = 7
 The optimal solution is to select items 1 and 2:
 - Item 1: weight=2, value=3
 - Item 2: weight=3, value=4
@@ -146,7 +146,7 @@ The optimal solution is to select items 1 and 2:
 
 ### Space Optimization
 - We can optimize the space complexity from O(n * W) to O(W) by using a 1D DP array that we update iteratively
-- The key insight is that dp[i][w] only depends on dp[i-1][w] and dp[i-1][w - weight[i-1]]
+- The key insight is that dp\[i\][w] only depends on dp\[i-1\][w] and dp\[i-1\][w - weight\[i-1\]]
 - By iterating w from W down to 0, we ensure we always use the previous iteration's value
 
 ## Notes

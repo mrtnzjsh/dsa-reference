@@ -65,11 +65,11 @@ Example:
 
     7. First merge of original: merge([27, 38, 3, 43], 0, 1, 3)
        left_arr = [27, 38], right_arr = [3, 43]
-       Step 1: 27 <= 43, arr[0] = 27, i=1, j=0, k=1
-       Step 2: 38 > 3, arr[1] = 3, i=1, j=1, k=2
-       Step 3: 38 <= 43, arr[2] = 38, i=2, j=1, k=3
-       Step 4: 38 > 3, arr[3] = 3, i=2, j=2, k=4
-       Copy remaining: left_arr[2] = 43, arr[4] = 43
+       Step 1: 27 <= 43, arr\[0\] = 27, i=1, j=0, k=1
+       Step 2: 38 > 3, arr\[1\] = 3, i=1, j=1, k=2
+       Step 3: 38 <= 43, arr\[2\] = 38, i=2, j=1, k=3
+       Step 4: 38 > 3, arr\[3\] = 3, i=2, j=2, k=4
+       Copy remaining: left_arr\[2\] = 43, arr\[4\] = 43
        Result: [3, 27, 38, 43, 9]
 
     8. Right recursive call: merge_sort([9, 82, 10])

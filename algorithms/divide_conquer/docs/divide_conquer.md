@@ -85,12 +85,12 @@ def binary_search(arr, target):
     
     mid = len(arr) // 2
     
-    if arr[mid] == target:
+    if arr\[mid\] == target:
         return mid
-    elif arr[mid] > target:
-        return binary_search(arr[:mid], target)
+    elif arr\[mid\] > target:
+        return binary_search(arr\[:mid\], target)
     else:
-        result = binary_search(arr[mid+1:], target)
+        result = binary_search(arr\[mid+1:\], target)
         return result + mid + 1 if result != -1 else -1
 ```
 
@@ -101,8 +101,8 @@ def merge_sort(arr):
         return arr
     
     mid = len(arr) // 2
-    left = merge_sort(arr[:mid])
-    right = merge_sort(arr[mid:])
+    left = merge_sort(arr\[:mid\])
+    right = merge_sort(arr\[mid:\])
     
     return merge(left, right)
 
@@ -111,15 +111,15 @@ def merge(left, right):
     i = j = 0
     
     while i < len(left) and j < len(right):
-        if left[i] <= right[j]:
-            result.append(left[i])
+        if left\[i\] <= right\[j\]:
+            result.append(left\[i\])
             i += 1
         else:
-            result.append(right[j])
+            result.append(right\[j\])
             j += 1
     
-    result.extend(left[i:])
-    result.extend(right[j:])
+    result.extend(left\[i:\])
+    result.extend(right\[j:\])
     return result
 ```
 

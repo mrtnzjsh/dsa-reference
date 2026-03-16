@@ -33,48 +33,48 @@ Example:
 
     Step-by-step example for quick_sort([10, 7, 8, 9, 1, 5]):
     1. Initial: arr = [10, 7, 8, 9, 1, 5], low = 0, high = 5
-       pivot = arr[5] = 5
+       pivot = arr\[5\] = 5
        Partitioning:
-       j = 0: arr[0] = 10 > 5, no swap, i stays -1
-       j = 1: arr[1] = 7 > 5, no swap, i stays -1
-       j = 2: arr[2] = 8 > 5, no swap, i stays -1
-       j = 3: arr[3] = 9 > 5, no swap, i stays -1
-       j = 4: arr[4] = 1 <= 5, swap arr[-1] and arr[4]
+       j = 0: arr\[0\] = 10 > 5, no swap, i stays -1
+       j = 1: arr\[1\] = 7 > 5, no swap, i stays -1
+       j = 2: arr\[2\] = 8 > 5, no swap, i stays -1
+       j = 3: arr\[3\] = 9 > 5, no swap, i stays -1
+       j = 4: arr\[4\] = 1 <= 5, swap arr\[-1\] and arr\[4\]
               arr = [1, 7, 8, 9, 10, 5], i = 0
-       Final swap: arr[1], arr[5] = arr[5], arr[1]
+       Final swap: arr\[1\], arr\[5\] = arr\[5\], arr\[1\]
        arr = [1, 5, 8, 9, 10, 7], pivot position = 1
 
     2. Left recursive call: quick_sort(arr, 0, 0)
        Base case: segment has 1 element, return
 
     3. Right recursive call: quick_sort(arr, 2, 5)
-       pivot = arr[5] = 7
+       pivot = arr\[5\] = 7
        Partitioning:
-       j = 2: arr[2] = 8 > 7, no swap, i stays 1
-       j = 3: arr[3] = 9 > 7, no swap, i stays 1
-       j = 4: arr[4] = 10 > 7, no swap, i stays 1
-       Final swap: arr[2], arr[5] = arr[5], arr[2]
+       j = 2: arr\[2\] = 8 > 7, no swap, i stays 1
+       j = 3: arr\[3\] = 9 > 7, no swap, i stays 1
+       j = 4: arr\[4\] = 10 > 7, no swap, i stays 1
+       Final swap: arr\[2\], arr\[5\] = arr\[5\], arr\[2\]
        arr = [1, 5, 7, 9, 10, 8], pivot position = 2
 
     4. Left recursive call: quick_sort(arr, 2, 1)
        Base case: low > high, return
 
     5. Right recursive call: quick_sort(arr, 3, 5)
-       pivot = arr[5] = 8
+       pivot = arr\[5\] = 8
        Partitioning:
-       j = 3: arr[3] = 9 > 8, no swap, i stays 2
-       j = 4: arr[4] = 10 > 8, no swap, i stays 2
-       Final swap: arr[3], arr[5] = arr[5], arr[3]
+       j = 3: arr\[3\] = 9 > 8, no swap, i stays 2
+       j = 4: arr\[4\] = 10 > 8, no swap, i stays 2
+       Final swap: arr\[3\], arr\[5\] = arr\[5\], arr\[3\]
        arr = [1, 5, 7, 8, 10, 9], pivot position = 3
 
     6. Left recursive call: quick_sort(arr, 3, 2)
        Base case: low > high, return
 
     7. Right recursive call: quick_sort(arr, 4, 5)
-       pivot = arr[5] = 9
+       pivot = arr\[5\] = 9
        Partitioning:
-       j = 4: arr[4] = 10 > 9, no swap, i stays 3
-       Final swap: arr[4], arr[5] = arr[5], arr[4]
+       j = 4: arr\[4\] = 10 > 9, no swap, i stays 3
+       Final swap: arr\[4\], arr\[5\] = arr\[5\], arr\[4\]
        arr = [1, 5, 7, 8, 9, 10], pivot position = 4
 
     8. Left recursive call: quick_sort(arr, 4, 3)

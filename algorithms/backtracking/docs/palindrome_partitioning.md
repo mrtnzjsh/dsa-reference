@@ -78,7 +78,7 @@ Returns a list of all possible palindrome partitions, where each partition is re
                - Check if "b" is a palindrome → yes
                - partition.append("b") → partition = ["a", "a", "b"]
                - Call partition_palindrome_recursive("aab", 3, ["a", "a", "b"], results)
-                  - start_idx = 3 == len(s) (3) → base case
+                  - start_idx = 3 == len\(s\) (3) → base case
                   - results.append(["a", "a", "b"]) → results = [["a", "a", "b"]]
                   - Return
                - partition.pop() → partition = ["a", "a"]
@@ -101,7 +101,7 @@ Returns a list of all possible palindrome partitions, where each partition is re
          - Check if "b" is a palindrome → yes
          - partition.append("b") → partition = ["aa", "b"]
          - Call partition_palindrome_recursive("aab", 3, ["aa", "b"], results)
-            - start_idx = 3 == len(s) (3) → base case
+            - start_idx = 3 == len\(s\) (3) → base case
             - results.append(["aa", "b"]) → results = [["a", "a", "b"], ["aa", "b"]]
             - Return
          - partition.pop() → partition = ["aa"]

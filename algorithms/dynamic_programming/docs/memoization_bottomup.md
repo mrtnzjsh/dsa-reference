@@ -86,18 +86,18 @@ Returns the solution using the specified approach (memoization or bottom-up):
 ### Step-by-step example for bottom_up_fibonacci(10):
 
 1. Create array dp of size 11
-2. Initialize base cases: dp[0] = 0, dp[1] = 1
+2. Initialize base cases: dp\[0\] = 0, dp\[1\] = 1
 3. Fill the array iteratively:
-   - dp[2] = dp[1] + dp[0] = 1 + 0 = 1
-   - dp[3] = dp[2] + dp[1] = 1 + 1 = 2
-   - dp[4] = dp[3] + dp[2] = 2 + 1 = 3
-   - dp[5] = dp[4] + dp[3] = 3 + 2 = 5
-   - dp[6] = dp[5] + dp[4] = 5 + 3 = 8
-   - dp[7] = dp[6] + dp[5] = 8 + 5 = 13
-   - dp[8] = dp[7] + dp[6] = 13 + 8 = 21
-   - dp[9] = dp[8] + dp[7] = 21 + 13 = 34
-   - dp[10] = dp[9] + dp[8] = 34 + 21 = 55
-4. Return dp[10] = 55
+   - dp\[2\] = dp\[1\] + dp\[0\] = 1 + 0 = 1
+   - dp\[3\] = dp\[2\] + dp\[1\] = 1 + 1 = 2
+   - dp\[4\] = dp\[3\] + dp\[2\] = 2 + 1 = 3
+   - dp\[5\] = dp\[4\] + dp\[3\] = 3 + 2 = 5
+   - dp\[6\] = dp\[5\] + dp\[4\] = 5 + 3 = 8
+   - dp\[7\] = dp\[6\] + dp\[5\] = 8 + 5 = 13
+   - dp\[8\] = dp\[7\] + dp\[6\] = 13 + 8 = 21
+   - dp\[9\] = dp\[8\] + dp\[7\] = 21 + 13 = 34
+   - dp\[10\] = dp\[9\] + dp\[8\] = 34 + 21 = 55
+4. Return dp\[10\] = 55
 
 ### Step-by-step example for bottom_up_knapsack_01([2, 3, 4], [3, 4, 5], 5):
 
@@ -105,43 +105,43 @@ Returns the solution using the specified approach (memoization or bottom-up):
 2. Initialize all values to 0
 3. Fill the DP table row by row:
    - Row 1 (i=1, weight 2, value 3):
-     - w=1: weight(2) > 1 → dp[1][1] = dp[0][1] = 0
-     - w=2: weight(2) ≤ 2 → dp[1][2] = max(dp[0][2], 3 + dp[0][0]) = max(0, 3) = 3
-     - w=3: weight(2) ≤ 3 → dp[1][3] = max(dp[0][3], 3 + dp[0][1]) = max(0, 3) = 3
-     - w=4: weight(2) ≤ 4 → dp[1][4] = max(dp[0][4], 3 + dp[0][2]) = max(0, 3) = 3
-     - w=5: weight(2) ≤ 5 → dp[1][5] = max(dp[0][5], 3 + dp[0][3]) = max(0, 3) = 3
+     - w=1: weight(2) > 1 → dp\[1\][1] = dp\[0\][1] = 0
+     - w=2: weight(2) ≤ 2 → dp\[1\][2] = max(dp\[0\][2], 3 + dp\[0\][0]) = max(0, 3) = 3
+     - w=3: weight(2) ≤ 3 → dp\[1\][3] = max(dp\[0\][3], 3 + dp\[0\][1]) = max(0, 3) = 3
+     - w=4: weight(2) ≤ 4 → dp\[1\][4] = max(dp\[0\][4], 3 + dp\[0\][2]) = max(0, 3) = 3
+     - w=5: weight(2) ≤ 5 → dp\[1\][5] = max(dp\[0\][5], 3 + dp\[0\][3]) = max(0, 3) = 3
    - Row 2 (i=2, weight 3, value 4):
-     - w=1: weight(3) > 1 → dp[2][1] = dp[1][1] = 0
-     - w=2: weight(3) > 2 → dp[2][2] = dp[1][2] = 3
-     - w=3: weight(3) ≤ 3 → dp[2][3] = max(dp[1][3], 4 + dp[1][0]) = max(3, 4) = 4
-     - w=4: weight(3) ≤ 4 → dp[2][4] = max(dp[1][4], 4 + dp[1][1]) = max(3, 4) = 4
-     - w=5: weight(3) ≤ 5 → dp[2][5] = max(dp[1][5], 4 + dp[1][2]) = max(3, 7) = 7
+     - w=1: weight(3) > 1 → dp\[2\][1] = dp\[1\][1] = 0
+     - w=2: weight(3) > 2 → dp\[2\][2] = dp\[1\][2] = 3
+     - w=3: weight(3) ≤ 3 → dp\[2\][3] = max(dp\[1\][3], 4 + dp\[1\][0]) = max(3, 4) = 4
+     - w=4: weight(3) ≤ 4 → dp\[2\][4] = max(dp\[1\][4], 4 + dp\[1\][1]) = max(3, 4) = 4
+     - w=5: weight(3) ≤ 5 → dp\[2\][5] = max(dp\[1\][5], 4 + dp\[1\][2]) = max(3, 7) = 7
    - Row 3 (i=3, weight 4, value 5):
-     - w=1: weight(4) > 1 → dp[3][1] = dp[2][1] = 0
-     - w=2: weight(4) > 2 → dp[3][2] = dp[2][2] = 3
-     - w=3: weight(4) > 3 → dp[3][3] = dp[2][3] = 4
-     - w=4: weight(4) ≤ 4 → dp[3][4] = max(dp[2][4], 5 + dp[2][0]) = max(4, 5) = 5
-     - w=5: weight(4) ≤ 5 → dp[3][5] = max(dp[2][5], 5 + dp[2][1]) = max(7, 5) = 7
-4. Return dp[3][5] = 7
+     - w=1: weight(4) > 1 → dp\[3\][1] = dp\[2\][1] = 0
+     - w=2: weight(4) > 2 → dp\[3\][2] = dp\[2\][2] = 3
+     - w=3: weight(4) > 3 → dp\[3\][3] = dp\[2\][3] = 4
+     - w=4: weight(4) ≤ 4 → dp\[3\][4] = max(dp\[2\][4], 5 + dp\[2\][0]) = max(4, 5) = 5
+     - w=5: weight(4) ≤ 5 → dp\[3\][5] = max(dp\[2\][5], 5 + dp\[2\][1]) = max(7, 5) = 7
+4. Return dp\[3\][5] = 7
 
 ### Step-by-step example for bottom_up_coin_change([1, 2, 5], 11):
 
 1. Create array dp of size 12 (amount + 1)
 2. Initialize all values to amount + 1 = 12: [12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12]
-3. Set dp[0] = 0: [0, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12]
+3. Set dp\[0\] = 0: [0, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12]
 4. Fill the array iteratively:
-   - i=1: coin=1 → dp[1] = min(12, dp[0] + 1) = 1; coin=2 → dp[1] = min(1, 12+1) = 1; coin=5 → dp[1] = min(1, 12+1) = 1
-   - i=2: coin=1 → dp[2] = min(12, dp[1] + 1) = 2; coin=2 → dp[2] = min(2, dp[0] + 1) = 1; coin=5 → dp[2] = min(1, 12+1) = 1
-   - i=3: coin=1 → dp[3] = min(12, dp[2] + 1) = 2; coin=2 → dp[3] = min(2, dp[1] + 1) = 2; coin=5 → dp[3] = min(2, 12+1) = 2
-   - i=4: coin=1 → dp[4] = min(12, dp[3] + 1) = 3; coin=2 → dp[4] = min(3, dp[2] + 1) = 2; coin=5 → dp[4] = min(2, 12+1) = 2
-   - i=5: coin=1 → dp[5] = min(12, dp[4] + 1) = 3; coin=2 → dp[5] = min(3, dp[3] + 1) = 3; coin=5 → dp[5] = min(3, dp[0] + 1) = 1
-   - i=6: coin=1 → dp[6] = min(12, dp[5] + 1) = 2; coin=2 → dp[6] = min(2, dp[4] + 1) = 3; coin=5 → dp[6] = min(2, dp[1] + 1) = 2
-   - i=7: coin=1 → dp[7] = min(12, dp[6] + 1) = 3; coin=2 → dp[7] = min(3, dp[5] + 1) = 3; coin=5 → dp[7] = min(3, dp[2] + 1) = 2
-   - i=8: coin=1 → dp[8] = min(12, dp[7] + 1) = 3; coin=2 → dp[8] = min(3, dp[6] + 1) = 3; coin=5 → dp[8] = min(3, dp[3] + 1) = 3
-   - i=9: coin=1 → dp[9] = min(12, dp[8] + 1) = 4; coin=2 → dp[9] = min(4, dp[7] + 1) = 4; coin=5 → dp[9] = min(4, dp[4] + 1) = 3
-   - i=10: coin=1 → dp[10] = min(12, dp[9] + 1) = 4; coin=2 → dp[10] = min(4, dp[8] + 1) = 4; coin=5 → dp[10] = min(4, dp[5] + 1) = 3
-   - i=11: coin=1 → dp[11] = min(12, dp[10] + 1) = 5; coin=2 → dp[11] = min(5, dp[9] + 1) = 4; coin=5 → dp[11] = min(4, dp[6] + 1) = 3
-5. Return dp[11] = 3
+   - i=1: coin=1 → dp\[1\] = min(12, dp\[0\] + 1) = 1; coin=2 → dp\[1\] = min(1, 12+1) = 1; coin=5 → dp\[1\] = min(1, 12+1) = 1
+   - i=2: coin=1 → dp\[2\] = min(12, dp\[1\] + 1) = 2; coin=2 → dp\[2\] = min(2, dp\[0\] + 1) = 1; coin=5 → dp\[2\] = min(1, 12+1) = 1
+   - i=3: coin=1 → dp\[3\] = min(12, dp\[2\] + 1) = 2; coin=2 → dp\[3\] = min(2, dp\[1\] + 1) = 2; coin=5 → dp\[3\] = min(2, 12+1) = 2
+   - i=4: coin=1 → dp\[4\] = min(12, dp\[3\] + 1) = 3; coin=2 → dp\[4\] = min(3, dp\[2\] + 1) = 2; coin=5 → dp\[4\] = min(2, 12+1) = 2
+   - i=5: coin=1 → dp\[5\] = min(12, dp\[4\] + 1) = 3; coin=2 → dp\[5\] = min(3, dp\[3\] + 1) = 3; coin=5 → dp\[5\] = min(3, dp\[0\] + 1) = 1
+   - i=6: coin=1 → dp\[6\] = min(12, dp\[5\] + 1) = 2; coin=2 → dp\[6\] = min(2, dp\[4\] + 1) = 3; coin=5 → dp\[6\] = min(2, dp\[1\] + 1) = 2
+   - i=7: coin=1 → dp\[7\] = min(12, dp\[6\] + 1) = 3; coin=2 → dp\[7\] = min(3, dp\[5\] + 1) = 3; coin=5 → dp\[7\] = min(3, dp\[2\] + 1) = 2
+   - i=8: coin=1 → dp\[8\] = min(12, dp\[7\] + 1) = 3; coin=2 → dp\[8\] = min(3, dp\[6\] + 1) = 3; coin=5 → dp\[8\] = min(3, dp\[3\] + 1) = 3
+   - i=9: coin=1 → dp\[9\] = min(12, dp\[8\] + 1) = 4; coin=2 → dp\[9\] = min(4, dp\[7\] + 1) = 4; coin=5 → dp\[9\] = min(4, dp\[4\] + 1) = 3
+   - i=10: coin=1 → dp\[10\] = min(12, dp\[9\] + 1) = 4; coin=2 → dp\[10\] = min(4, dp\[8\] + 1) = 4; coin=5 → dp\[10\] = min(4, dp\[5\] + 1) = 3
+   - i=11: coin=1 → dp\[11\] = min(12, dp\[10\] + 1) = 5; coin=2 → dp\[11\] = min(5, dp\[9\] + 1) = 4; coin=5 → dp\[11\] = min(4, dp\[6\] + 1) = 3
+5. Return dp\[11\] = 3
 
 ## Complexity Analysis
 

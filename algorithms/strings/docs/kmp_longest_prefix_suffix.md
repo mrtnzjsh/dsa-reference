@@ -13,7 +13,7 @@ Knuth-Morris-Pratt (KMP) algorithm efficiently finds all occurrences of pattern 
   1. Characters match (`process_string[i] == process_string[max_lps]`): Extend longest prefix-suffix by 1
   2. Characters don't match:
      - If `max_lps > 0`: use previous longest prefix-suffix value
-     - If `max_lps == 0`: no proper prefix-suffix, set `lps[i] = 0`
+     - If `max_lps == 0`: no proper prefix-suffix, set `lps\[i\] = 0`
 
 ### Matching Process
 1. Initialize indices: `i = 0` (text index), `j = 0` (pattern index)
@@ -43,25 +43,25 @@ Knuth-Morris-Pratt (KMP) algorithm efficiently finds all occurrences of pattern 
 **Text:** "ABABDABACDABABCABAB"
 
 **LPS array construction:**
-- `lps[0] = 0` (no proper prefix)
-- `lps[1] = 0` (AB vs B)
-- `lps[2] = 1` (ABA vs A)
-- `lps[3] = 2` (ABAB vs AB)
-- `lps[4] = 0` (ABABD vs D)
-- `lps[5] = 1` (ABABDA vs A)
-- `lps[6] = 2` (ABABDAB vs AB)
-- `lps[7] = 0` (ABABDABA vs C)
-- `lps[8] = 0` (ABABDABAC vs D)
-- `lps[9] = 1` (ABABDABACD vs A)
-- `lps[10] = 2` (ABABDABACDA vs AB)
-- `lps[11] = 3` (ABABDABACDAB vs ABC)
-- `lps[12] = 0` (ABABDABACDABA vs C)
-- `lps[13] = 1` (ABABDABACDABAB vs B)
-- `lps[14] = 2` (ABABDABACDABABC vs AB)
+- `lps\[0\] = 0` (no proper prefix)
+- `lps\[1\] = 0` (AB vs B)
+- `lps\[2\] = 1` (ABA vs A)
+- `lps\[3\] = 2` (ABAB vs AB)
+- `lps\[4\] = 0` (ABABD vs D)
+- `lps\[5\] = 1` (ABABDA vs A)
+- `lps\[6\] = 2` (ABABDAB vs AB)
+- `lps\[7\] = 0` (ABABDABA vs C)
+- `lps\[8\] = 0` (ABABDABAC vs D)
+- `lps\[9\] = 1` (ABABDABACD vs A)
+- `lps\[10\] = 2` (ABABDABACDA vs AB)
+- `lps\[11\] = 3` (ABABDABACDAB vs ABC)
+- `lps\[12\] = 0` (ABABDABACDABA vs C)
+- `lps\[13\] = 1` (ABABDABACDABAB vs B)
+- `lps\[14\] = 2` (ABABDABACDABABC vs AB)
 
 **Matching example:**
 - Index 0: Match ABAB (found at position 0)
-- Use LPS to continue: `j = lps[3] = 2`
+- Use LPS to continue: `j = lps\[3\] = 2`
 - Continue matching until another occurrence found
 
 ## Complexity Analysis

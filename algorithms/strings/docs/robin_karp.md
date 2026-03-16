@@ -24,7 +24,7 @@ This module implements the Robin-Karp algorithm for pattern matching using a rol
        - Perform direct character comparison of all m characters
        - If all characters match: print "Pattern found at index", s
      - Calculate rolling hash for the next position:
-       - `text_hash = (base × (text_hash - text[s] × h) + text[s+m]) mod prime`
+       - `text_hash = (base × (text_hash - text\[s\] × h) + text\[s+m\]) mod prime`
        - This subtracts the contribution of the outgoing character
        - Multiplies by base to shift remaining hash
        - Adds the contribution of the new character
@@ -81,7 +81,7 @@ Pattern found at index 9
 
 **Fourth position s = 3:**
 - Compare pattern_hash (989903) with text_hash (989903) → equal!
-- Direct comparison: text[3]='a' == 'a', text[4]='b' == 'b', text[5]='c' == 'c'
+- Direct comparison: text\[3\]='a' == 'a', text\[4\]='b' == 'b', text\[5\]='c' == 'c'
 - **Print "Pattern found at index 3"**
 
 **Fifth position s = 4:**
@@ -152,10 +152,10 @@ Pattern found at index 9
 ## Notes
 
 **Rolling Hash Technique:**
-- Hash of string s = (s[0] × b^(m-1) + s[1] × b^(m-2) + ... + s[m-1] × b^0) mod p
+- Hash of string s = (s\[0\] × b^(m-1) + s\[1\] × b^(m-2) + ... + s\[m-1\] × b^0) mod p
 - Where b = base, p = prime
 - Precomputed value h = b^(m-1) mod p allows efficient hash updates
-- Rolling hash formula: `text_hash = (base × (text_hash - text[s] × h) + text[s+m]) mod prime`
+- Rolling hash formula: `text_hash = (base × (text_hash - text\[s\] × h) + text\[s+m\]) mod prime`
 
 **Why Use Different Base and Prime:**
 - **Base**: Typically 101 or 256 (number of characters in alphabet)

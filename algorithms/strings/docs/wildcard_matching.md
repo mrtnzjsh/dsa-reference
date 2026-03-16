@@ -36,11 +36,11 @@ match(i, j) =
 
 1. Create DP table with dimensions (m+1) × (n+1)
 2. Initialize base cases:
-   - dp[m][n] = True (empty pattern matches empty string)
-   - dp[i][n] = False for i < m (non-empty string can't match empty pattern)
-   - dp[m][j] = dp[m][j+1] if P[j] = '*' (empty string matches only '*' sequences)
+   - dp\[m\][n] = True (empty pattern matches empty string)
+   - dp\[i\][n] = False for i < m (non-empty string can't match empty pattern)
+   - dp\[m\][j] = dp\[m\][j+1] if P[j] = '*' (empty string matches only '*' sequences)
 3. Fill DP table from bottom-right to top-left using the recurrence
-4. Return dp[0][0]
+4. Return dp\[0\][0]
 
 **Greedy Algorithm (Optimal Approach):**
 
@@ -89,12 +89,12 @@ c   | F | F | F | T | T |
 ```
 
 **Filling the table:**
-- dp[0][0] = True
-- dp[0][1] = False (a doesn't match empty)
-- dp[1][1] = True (a matches a)
-- dp[1][2] = False (d doesn't match a)
-- dp[2][4] = True (first * matches empty sequence, then a matches h)
-- Final result: dp[0][0] = True
+- dp\[0\][0] = True
+- dp\[0\][1] = False (a doesn't match empty)
+- dp\[1\][1] = True (a matches a)
+- dp\[1\][2] = False (d doesn't match a)
+- dp\[2\][4] = True (first * matches empty sequence, then a matches h)
+- Final result: dp\[0\][0] = True
 
 Pattern "ad*c" matches string "ahbgdc" (via * matching "hb")
 

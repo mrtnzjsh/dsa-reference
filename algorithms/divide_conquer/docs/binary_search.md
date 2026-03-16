@@ -34,16 +34,16 @@ Example:
     Step-by-step example for binary_search(arr, 5):
     1. Initial: arr = [1, 2, 3, 4, 5, 6, 7, 8, 9], target = 5
        low = 0, high = 8, mid = (0 + 8) // 2 = 4
-       arr[4] = 5 == target → return 4
+       arr\[4\] = 5 == target → return 4
 
     Step-by-step example for binary_search(arr, 3):
     1. Initial: arr = [1, 2, 3, 4, 5, 6, 7, 8, 9], target = 3
        low = 0, high = 8, mid = 4
-       arr[4] = 5 > target → high = 3
+       arr\[4\] = 5 > target → high = 3
     2. low = 0, high = 3, mid = 1
-       arr[1] = 2 < target → low = 2
+       arr\[1\] = 2 < target → low = 2
     3. low = 2, high = 3, mid = 2
-       arr[2] = 3 == target → return 2
+       arr\[2\] = 3 == target → return 2
 
 Complexity Analysis:
     Time Complexity: O(log n)

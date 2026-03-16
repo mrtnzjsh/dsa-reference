@@ -12,13 +12,13 @@ This module implements the search algorithm for finding a target element in a ro
    - a. Calculate the mid index as low + (high - low) // 2 (avoids potential integer overflow)
    - b. If the element at mid equals the target, return the mid index
    - c. Check which half of the array is properly sorted:
-      - If arr[low] <= arr[mid]: This means the left half [low, mid] is properly sorted
-        - If target lies within the sorted left half (arr[low] <= target < arr[mid]):
+      - If arr\[low\] <= arr\[mid\]: This means the left half [low, mid] is properly sorted
+        - If target lies within the sorted left half (arr\[low\] <= target < arr\[mid\]):
           Set high = mid - 1 to search the left half
         - Else:
           Set low = mid + 1 to search the right half
       - Else: This means the right half [mid, high] is properly sorted
-        - If target lies within the sorted right half (arr[mid] < target <= arr[high]):
+        - If target lies within the sorted right half (arr\[mid\] < target <= arr\[high\]):
           Set low = mid + 1 to search the right half
         - Else:
           Set high = mid - 1 to search the left half
@@ -52,42 +52,42 @@ Returns the index of the target if found, otherwise returns -1
 
 1. Initial: arr = [4, 5, 6, 7, 0, 1, 2], target = 0
    low = 0, high = 6, mid = 3
-   arr[3] = 7 != target (0)
-   arr[low] = 4 <= arr[mid] = 7 → left half is sorted
-   target (0) < arr[low] = 4 → not in left half, search right
+   arr\[3\] = 7 != target (0)
+   arr\[low\] = 4 <= arr\[mid\] = 7 → left half is sorted
+   target (0) < arr\[low\] = 4 → not in left half, search right
    low = mid + 1 = 4
 
 2. low = 4, high = 6, mid = 5
-   arr[5] = 1 != target (0)
-   arr[low] = 0 <= arr[mid] = 1 → left half is sorted
-   target (0) == arr[low] = 0 → not in left half (need > arr[low])
-   target (0) > arr[mid] = 1 → not in right half, search left
+   arr\[5\] = 1 != target (0)
+   arr\[low\] = 0 <= arr\[mid\] = 1 → left half is sorted
+   target (0) == arr\[low\] = 0 → not in left half (need > arr\[low\])
+   target (0) > arr\[mid\] = 1 → not in right half, search left
    high = mid - 1 = 4
 
 3. low = 4, high = 4, mid = 4
-   arr[4] = 0 == target → return 4
+   arr\[4\] = 0 == target → return 4
 
 ### Step-by-step example for search_rotated_array([4, 5, 6, 7, 0, 1, 2], 3):
 
 1. Initial: arr = [4, 5, 6, 7, 0, 1, 2], target = 3
    low = 0, high = 6, mid = 3
-   arr[3] = 7 != target (3)
-   arr[low] = 4 <= arr[mid] = 7 → left half is sorted
-   target (3) < arr[low] = 4 → not in left half, search right
+   arr\[3\] = 7 != target (3)
+   arr\[low\] = 4 <= arr\[mid\] = 7 → left half is sorted
+   target (3) < arr\[low\] = 4 → not in left half, search right
    low = mid + 1 = 4
 
 2. low = 4, high = 6, mid = 5
-   arr[5] = 1 != target (3)
-   arr[low] = 0 <= arr[mid] = 1 → left half is sorted
-   target (3) > arr[mid] = 1 → check right half
-   arr[mid] = 1 < target (3) <= arr[high] = 2 → not in right half
+   arr\[5\] = 1 != target (3)
+   arr\[low\] = 0 <= arr\[mid\] = 1 → left half is sorted
+   target (3) > arr\[mid\] = 1 → check right half
+   arr\[mid\] = 1 < target (3) <= arr\[high\] = 2 → not in right half
    high = mid - 1 = 4
 
 3. low = 4, high = 4, mid = 4
-   arr[4] = 0 != target (3)
-   arr[low] = 0 <= arr[mid] = 0 → left half is sorted
-   target (3) > arr[mid] = 0 → check right half
-   arr[mid] = 0 < target (3) <= arr[high] = 0 → not in right half
+   arr\[4\] = 0 != target (3)
+   arr\[low\] = 0 <= arr\[mid\] = 0 → left half is sorted
+   target (3) > arr\[mid\] = 0 → check right half
+   arr\[mid\] = 0 < target (3) <= arr\[high\] = 0 → not in right half
    high = mid - 1 = 3
 
 4. low = 4, high = 3 → loop ends
@@ -97,13 +97,13 @@ Returns the index of the target if found, otherwise returns -1
 
 1. Initial: arr = [5, 1, 3], target = 5
    low = 0, high = 2, mid = 1
-   arr[1] = 1 != target (5)
-   arr[low] = 5 <= arr[mid] = 1 → This is False, so right half is sorted
-   arr[mid] = 1 < target (5) <= arr[high] = 3 → not in right half
+   arr\[1\] = 1 != target (5)
+   arr\[low\] = 5 <= arr\[mid\] = 1 → This is False, so right half is sorted
+   arr\[mid\] = 1 < target (5) <= arr\[high\] = 3 → not in right half
    high = mid - 1 = 0
 
 2. low = 0, high = 0, mid = 0
-   arr[0] = 5 == target → return 0
+   arr\[0\] = 5 == target → return 0
 
 ## Complexity Analysis
 

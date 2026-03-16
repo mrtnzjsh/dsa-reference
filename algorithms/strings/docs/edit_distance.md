@@ -9,18 +9,18 @@ This module implements the edit distance (Levenshtein distance) algorithm, which
 1. Create a (m+1) × (n+1) DP matrix where m and n are the lengths of the two input strings
 
 2. Initialize the first row and column with base cases:
-   - dp[i][0] = i (i deletions to transform s[:i] to empty string)
-   - dp[0][j] = j (j insertions to transform empty string to t[:j])
+   - dp\[i\][0] = i (i deletions to transform s\[:i\] to empty string)
+   - dp\[0\][j] = j (j insertions to transform empty string to t[:j])
 
 3. Fill the matrix using the recurrence relation:
-   - If s[i-1] == t[j-1], substitution_cost = 0, else substitution_cost = 1
-   - dp[i][j] = min(
-       dp[i-1][j] + 1,           # Deletion
-       dp[i][j-1] + 1,           # Insertion
-       dp[i-1][j-1] + substitution_cost  # Substitution
+   - If s\[i-1\] == t[j-1], substitution_cost = 0, else substitution_cost = 1
+   - dp\[i\][j] = min(
+       dp\[i-1\][j] + 1,           # Deletion
+       dp\[i\][j-1] + 1,           # Insertion
+       dp\[i-1\][j-1] + substitution_cost  # Substitution
      )
 
-4. Return the value at dp[m][n]
+4. Return the value at dp\[m\][n]
 
 ## Input
 

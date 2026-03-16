@@ -7,14 +7,14 @@ This module implements the word break algorithm, which determines if a given str
 ## Algorithm Steps
 
 1. Create a DP array of size n+1 where n is the length of the input string, initialized with False
-2. Set dp[0] = True (empty string is always segmentable)
+2. Set dp\[0\] = True (empty string is always segmentable)
 3. For each position i from 1 to n:
    - For each position j from 0 to i-1:
-     - If dp[j] is True and the substring s[j:i] is in the dictionary:
-       - Set dp[i] = True
+     - If dp\[j\] is True and the substring s\[j:i\] is in the dictionary:
+       - Set dp\[i\] = True
        - Break
 
-4. Return dp[n]
+4. Return dp\[n\]
 
 ## Input
 
@@ -43,24 +43,24 @@ False
 1. Initialize dp array: [True, False, False, False, False, False, False, False, False, False, False]
 
 2. Processing:
-   - i=1: "c" - no word matches, dp[1] remains False
-   - i=2: "ca" - no word matches, dp[2] remains False
-   - i=3: "cat" - matches! dp[0] = True, so dp[3] = True
-   - i=4: "cats" - matches, but dp[1] = False, so dp[4] remains False
-   - i=5: "catsa" - no word matches, dp[5] remains False
-   - i=6: "catsan" - no word matches, dp[6] remains False
-   - i=7: "catsand" - no word matches, dp[7] remains False
-   - i=8: "catsandd" - no word matches, dp[8] remains False
-   - i=9: "catsanddo" - no word matches, dp[9] remains False
-   - i=10: "catsanddog" - "dog" matches! dp[7] = False, so dp[10] remains False
+   - i=1: "c" - no word matches, dp\[1\] remains False
+   - i=2: "ca" - no word matches, dp\[2\] remains False
+   - i=3: "cat" - matches! dp\[0\] = True, so dp\[3\] = True
+   - i=4: "cats" - matches, but dp\[1\] = False, so dp\[4\] remains False
+   - i=5: "catsa" - no word matches, dp\[5\] remains False
+   - i=6: "catsan" - no word matches, dp\[6\] remains False
+   - i=7: "catsand" - no word matches, dp\[7\] remains False
+   - i=8: "catsandd" - no word matches, dp\[8\] remains False
+   - i=9: "catsanddo" - no word matches, dp\[9\] remains False
+   - i=10: "catsanddog" - "dog" matches! dp\[7\] = False, so dp\[10\] remains False
 
 3. Recalculate with correct dp values:
-   - dp[3] = True (cat)
-   - dp[4] = False (cats, but dp[1]=False)
-   - dp[7] = True (sand with dp[3]=True) → cats + sand
-   - dp[10] = True (dog with dp[7]=True) → cats + sand + dog
+   - dp\[3\] = True (cat)
+   - dp\[4\] = False (cats, but dp\[1\]=False)
+   - dp\[7\] = True (sand with dp\[3\]=True) → cats + sand
+   - dp\[10\] = True (dog with dp\[7\]=True) → cats + sand + dog
 
-4. Final result: dp[10] = True
+4. Final result: dp\[10\] = True
 
 5. Valid segmentations: "cats and dog" or "cats sand dog"
 
@@ -115,4 +115,4 @@ The word break problem has several important properties and considerations:
 
 **Mathematical Foundation:**
 The problem relates to string partitioning, combinatorics, and NP-completeness theory. The DP recurrence is:
-dp[i] = OR over all words w in D of (dp[i - len(w)] AND (S[i - len(w):i] == w))
+dp\[i\] = OR over all words w in D of (dp\[i - len(w)\] AND (S[i - len(w):i] == w))

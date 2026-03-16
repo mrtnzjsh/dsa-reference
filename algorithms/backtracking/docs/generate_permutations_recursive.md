@@ -70,119 +70,119 @@ Returns a list of all possible permutations, where each permutation is represent
 2. start_idx = 0, arr = ["a", "b", "c"]
 3. Loop idx from 0 to 2
 4. First iteration: idx = 0
-   - Swap arr[0] and arr[0] (no change)
+   - Swap arr\[0\] and arr\[0\] (no change)
    - arr = ["a", "b", "c"]
    - Recursively call generate_permutations_recursively(["a", "b", "c"], 1, [])
       - start_idx = 1, arr = ["a", "b", "c"]
       - Loop idx from 1 to 2
       - First iteration: idx = 1
-         - Swap arr[1] and arr[1] (no change)
+         - Swap arr\[1\] and arr\[1\] (no change)
          - arr = ["a", "b", "c"]
          - Recursively call generate_permutations_recursively(["a", "b", "c"], 2, [])
             - start_idx = 2, arr = ["a", "b", "c"]
             - Loop idx from 2 to 2
             - First iteration: idx = 2
-               - Swap arr[2] and arr[2] (no change)
+               - Swap arr\[2\] and arr\[2\] (no change)
                - arr = ["a", "b", "c"]
                - Recursively call generate_permutations_recursively(["a", "b", "c"], 3, [])
                   - start_idx = 3 == len(arr) → base case
                   - results.append(["a", "b", "c"])
                   - Return
-         - Swap arr[2] and arr[2] (no change)
+         - Swap arr\[2\] and arr\[2\] (no change)
       - Return
    - Second iteration: idx = 2
-      - Swap arr[1] and arr[2]
+      - Swap arr\[1\] and arr\[2\]
       - arr = ["a", "c", "b"]
       - Recursively call generate_permutations_recursively(["a", "c", "b"], 2, [])
          - start_idx = 2, arr = ["a", "c", "b"]
          - Loop idx from 2 to 2
          - First iteration: idx = 2
-            - Swap arr[2] and arr[2] (no change)
+            - Swap arr\[2\] and arr\[2\] (no change)
             - arr = ["a", "c", "b"]
             - Recursively call generate_permutations_recursively(["a", "c", "b"], 3, [])
                - start_idx = 3 == len(arr) → base case
                - results.append(["a", "c", "b"])
                - Return
-         - Swap arr[2] and arr[2] (no change)
-      - Swap arr[1] and arr[2] → arr = ["a", "b", "c"]
+         - Swap arr\[2\] and arr\[2\] (no change)
+      - Swap arr\[1\] and arr\[2\] → arr = ["a", "b", "c"]
    - Return
-- Swap arr[0] and arr[0] (no change)
+- Swap arr\[0\] and arr\[0\] (no change)
 5. Second iteration: idx = 1
-   - Swap arr[0] and arr[1]
+   - Swap arr\[0\] and arr\[1\]
    - arr = ["b", "a", "c"]
    - Recursively call generate_permutations_recursively(["b", "a", "c"], 1, [])
       - start_idx = 1, arr = ["b", "a", "c"]
       - Loop idx from 1 to 2
       - First iteration: idx = 1
-         - Swap arr[1] and arr[1] (no change)
+         - Swap arr\[1\] and arr\[1\] (no change)
          - arr = ["b", "a", "c"]
          - Recursively call generate_permutations_recursively(["b", "a", "c"], 2, [])
             - start_idx = 2, arr = ["b", "a", "c"]
             - Loop idx from 2 to 2
             - First iteration: idx = 2
-               - Swap arr[2] and arr[2] (no change)
+               - Swap arr\[2\] and arr\[2\] (no change)
                - arr = ["b", "a", "c"]
                - Recursively call generate_permutations_recursively(["b", "a", "c"], 3, [])
                   - start_idx = 3 == len(arr) → base case
                   - results.append(["b", "a", "c"])
                   - Return
-         - Swap arr[2] and arr[2] (no change)
+         - Swap arr\[2\] and arr\[2\] (no change)
       - Return
    - Second iteration: idx = 2
-      - Swap arr[1] and arr[2]
+      - Swap arr\[1\] and arr\[2\]
       - arr = ["b", "c", "a"]
       - Recursively call generate_permutations_recursively(["b", "c", "a"], 2, [])
          - start_idx = 2, arr = ["b", "c", "a"]
          - Loop idx from 2 to 2
          - First iteration: idx = 2
-            - Swap arr[2] and arr[2] (no change)
+            - Swap arr\[2\] and arr\[2\] (no change)
             - arr = ["b", "c", "a"]
             - Recursively call generate_permutations_recursively(["b", "c", "a"], 3, [])
                - start_idx = 3 == len(arr) → base case
                - results.append(["b", "c", "a"])
                - Return
-         - Swap arr[2] and arr[2] (no change)
-      - Swap arr[1] and arr[2] → arr = ["b", "a", "c"]
+         - Swap arr\[2\] and arr\[2\] (no change)
+      - Swap arr\[1\] and arr\[2\] → arr = ["b", "a", "c"]
    - Return
-- Swap arr[0] and arr[1] → arr = ["a", "b", "c"]
+- Swap arr\[0\] and arr\[1\] → arr = ["a", "b", "c"]
 6. Third iteration: idx = 2
-   - Swap arr[0] and arr[2]
+   - Swap arr\[0\] and arr\[2\]
    - arr = ["c", "b", "a"]
    - Recursively call generate_permutations_recursively(["c", "b", "a"], 1, [])
       - start_idx = 1, arr = ["c", "b", "a"]
       - Loop idx from 1 to 2
       - First iteration: idx = 1
-         - Swap arr[1] and arr[1] (no change)
+         - Swap arr\[1\] and arr\[1\] (no change)
          - arr = ["c", "b", "a"]
          - Recursively call generate_permutations_recursively(["c", "b", "a"], 2, [])
             - start_idx = 2, arr = ["c", "b", "a"]
             - Loop idx from 2 to 2
             - First iteration: idx = 2
-               - Swap arr[2] and arr[2] (no change)
+               - Swap arr\[2\] and arr\[2\] (no change)
                - arr = ["c", "b", "a"]
                - Recursively call generate_permutations_recursively(["c", "b", "a"], 3, [])
                   - start_idx = 3 == len(arr) → base case
                   - results.append(["c", "b", "a"])
                   - Return
-         - Swap arr[2] and arr[2] (no change)
+         - Swap arr\[2\] and arr\[2\] (no change)
       - Return
    - Second iteration: idx = 2
-      - Swap arr[1] and arr[2]
+      - Swap arr\[1\] and arr\[2\]
       - arr = ["c", "a", "b"]
       - Recursively call generate_permutations_recursively(["c", "a", "b"], 2, [])
          - start_idx = 2, arr = ["c", "a", "b"]
          - Loop idx from 2 to 2
          - First iteration: idx = 2
-            - Swap arr[2] and arr[2] (no change)
+            - Swap arr\[2\] and arr\[2\] (no change)
             - arr = ["c", "a", "b"]
             - Recursively call generate_permutations_recursively(["c", "a", "b"], 3, [])
                - start_idx = 3 == len(arr) → base case
                - results.append(["c", "a", "b"])
                - Return
-         - Swap arr[2] and arr[2] (no change)
-      - Swap arr[1] and arr[2] → arr = ["c", "b", "a"]
+         - Swap arr\[2\] and arr\[2\] (no change)
+      - Swap arr\[1\] and arr\[2\] → arr = ["c", "b", "a"]
    - Return
-- Swap arr[0] and arr[2] → arr = ["a", "b", "c"]
+- Swap arr\[0\] and arr\[2\] → arr = ["a", "b", "c"]
 7. Return results = [["a", "b", "c"], ["a", "c", "b"], ["b", "a", "c"], ["b", "c", "a"], ["c", "b", "a"], ["c", "a", "b"]]
 
 ## Complexity Analysis

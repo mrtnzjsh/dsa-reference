@@ -38,7 +38,7 @@ match(i, j) =
 1. Create DP table with dimensions (m+1) × (n+1)
 2. Initialize base cases for empty string and empty pattern
 3. Fill DP table from bottom-right to top-left using the recurrence
-4. Return dp[0][0]
+4. Return dp\[0\][0]
 
 ## Example - Regular Expression Matching
 
@@ -59,13 +59,13 @@ a   | F | F | F | T |
 ```
 
 Filling the table:
-- dp[0][0] = True
-- dp[0][1] = False (pattern '.' doesn't match empty)
-- dp[1][1] = False (pattern 'a' doesn't match empty)
-- dp[1][2] = True (pattern 'a.' matches 'a')
-- dp[2][2] = True (pattern 'a.' matches 'aa')
+- dp\[0\][0] = True
+- dp\[0\][1] = False (pattern '.' doesn't match empty)
+- dp\[1\][1] = False (pattern 'a' doesn't match empty)
+- dp\[1\][2] = True (pattern 'a.' matches 'a')
+- dp\[2\][2] = True (pattern 'a.' matches 'aa')
 
-Final result: dp[0][0] = True
+Final result: dp\[0\][0] = True
 Pattern "a." matches string "aa" (a and .)
 
 ## Example - With Asterisk
@@ -74,7 +74,7 @@ Pattern: P = ".*"
 String: S = "aa"
 
 Step 1: P[1] = '*', so:
-- match empty with "*": match(0, 2) = True (since dp[0][0] = True)
+- match empty with "*": match(0, 2) = True (since dp\[0\][0] = True)
 - Or: match(1, 1) AND ('.' = 'a') = True AND True = True
 
 Result: True
@@ -97,30 +97,30 @@ We only need the current and previous rows:
 def isMatch(s, p):
     m, n = len(s), len(p)
     dp = [False] * (n + 1)
-    dp[0] = True
+    dp\[0\] = True
 
     # Initialize first row
     for j in range(1, n + 1):
         if p[j - 1] == '*':
-            dp[j] = dp[j - 1]
+            dp\[j\] = dp\[j - 1\]
 
     for i in range(1, m + 1):
-        prev = dp[0]
-        dp[0] = False
+        prev = dp\[0\]
+        dp\[0\] = False
 
         for j in range(1, n + 1):
-            temp = dp[j]
+            temp = dp\[j\]
 
             if p[j - 1] == '*':
-                dp[j] = dp[j - 1] or dp[j]
-            elif p[j - 1] == '.' or p[j - 1] == s[i - 1]:
-                dp[j] = prev
+                dp\[j\] = dp\[j - 1\] or dp\[j\]
+            elif p[j - 1] == '.' or p[j - 1] == s\[i - 1\]:
+                dp\[j\] = prev
             else:
-                dp[j] = False
+                dp\[j\] = False
 
             prev = temp
 
-    return dp[n]
+    return dp\[n\]
 ```
 
 ## Algorithm Properties

@@ -74,21 +74,21 @@ The iterative version prints visited vertices and their values
 
 1. Call dfs_recursive(graph, 0, visited)
 2. visited.append(0) → visited = [0]
-3. Print graph[0] → 0
+3. Print graph\[0\] → 0
 4. Iterate neighbors of vertex 0: [1, 2]
 5. For neighbor 1: 1 not in visited → recursive call dfs_recursive(graph, 1, visited)
    - visited.append(1) → visited = [0, 1]
-   - Print graph[1] → 1
+   - Print graph\[1\] → 1
    - Iterate neighbors of vertex 1: [0, 3]
    - For neighbor 0: 0 in visited → skip
    - For neighbor 3: 3 not in visited → recursive call dfs_recursive(graph, 3, visited)
       - visited.append(3) → visited = [0, 1, 3]
-      - Print graph[3] → 3
+      - Print graph\[3\] → 3
       - Iterate neighbors of vertex 3: [1, 2]
       - For neighbor 1: 1 in visited → skip
       - For neighbor 2: 2 not in visited → recursive call dfs_recursive(graph, 2, visited)
          - visited.append(2) → visited = [0, 1, 3, 2]
-         - Print graph[2] → 2
+         - Print graph\[2\] → 2
          - Iterate neighbors of vertex 2: [0, 3]
          - For neighbor 0: 0 in visited → skip
          - For neighbor 3: 3 in visited → skip

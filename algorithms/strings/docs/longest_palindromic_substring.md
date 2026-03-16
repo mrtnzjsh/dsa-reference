@@ -49,10 +49,10 @@ Result: Longest palindrome is "bab" or "aba" (both length 3)
 
 ## Algorithm Steps (Dynamic Programming)
 
-1. Create a 2D DP table where dp[i][j] = True if S[i:j+1] is a palindrome
-2. Base cases: Single characters are palindromes (dp[i][i] = True)
-3. For length 2: Check if S[i] == S[i+1] (dp[i][i+1] = True if equal)
-4. For length > 2: dp[i][j] = (S[i] == S[j]) AND dp[i+1][j-1]
+1. Create a 2D DP table where dp\[i\][j] = True if S[i:j+1] is a palindrome
+2. Base cases: Single characters are palindromes (dp\[i\][i] = True)
+3. For length 2: Check if S[i] == S[i+1] (dp\[i\][i+1] = True if equal)
+4. For length > 2: dp\[i\][j] = (S[i] == S[j]) AND dp\[i+1\][j-1]
 5. Track the maximum length palindrome found
 
 ## Example - DP Approach

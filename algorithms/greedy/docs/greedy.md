@@ -80,10 +80,10 @@ def activity_selection(activities):
     # Sort by finish time
     activities.sort(key=lambda x: x[1])
     
-    selected = [activities[0]]
-    last_end = activities[0][1]
+    selected = [activities\[0\]]
+    last_end = activities\[0\][1]
     
-    for start, end in activities[1:]:
+    for start, end in activities\[1:\]:
         if start >= last_end:
             selected.append((start, end))
             last_end = end
